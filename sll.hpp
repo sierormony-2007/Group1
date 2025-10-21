@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 #include <iostream>
 #include <string>
 using namespace std;
@@ -152,8 +152,7 @@ void swap(){
     cout << endl;
     }
 };
-=======
+
 void sll_observe(){
     
 }
->>>>>>> 75d1d04029ed5850b60b73cadfdac70adcd96070
