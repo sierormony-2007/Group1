@@ -4,7 +4,6 @@ using namespace std;
 struct Node{
 int value;
 Node* next;
-Node* prev;
 };
 
 class  Sll{
@@ -29,14 +28,14 @@ class  Sll{
             cur = cur->next;
         }
     }
-//insert at the front
-    void push_front(int val){
+//push/pop front back Head only
+    void push_frontH(int val){
         Node* newNode = new Node{val, nullptr};
         newNode->next = head;
         head = newNode;
         n++;
     }
-    void pop_front(int val){
+    void pop_frontH(int val){
         Node* newNode = new Node{val, nullptr};
         if(n==0){
             cout<<"no node to remove"<<endl;
@@ -45,10 +44,10 @@ class  Sll{
         head = head->next;
         delete tmp;
     }
-    void push_back(int val){
+    void push_backH(int val){
         Node* newNode = new Node{val, nullptr};
         if(n == 0){
-            push_front(val);
+            push_frontH(val);
             return;
         }
         _traverse();
@@ -56,7 +55,7 @@ class  Sll{
         cur->next = newNode;
         n++;
     }
-    void pop_back(int val){
+    void pop_backH(int val){
         if(n==0){
             cout<<"No node to delelte";
         }
@@ -72,7 +71,12 @@ class  Sll{
 
     
     
-    //insert at the middle or a specific position
+    //push/pop front back Head + tail
+    void push_frontHT(int val){
+
+    }
+
+
     void insertMiddle(int val, int pos){
         if(pos > n){
             cout<<"Out of node range!\n";
