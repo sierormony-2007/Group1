@@ -1,9 +1,24 @@
-void csll_observe(Csll* obj, void (Csll::*method)(), string msg){
-    auto t0 = clk::now();
+#include <iostream>
+#include <string>
+#ifndef NODE
+#define NODE
+using namespace std;
+struct Node{
+int value;
+Node* next;
+Node *tail;
+};
+struct DNode{
+    int data;
+    DNode *prev;
+    DNode *next;
+    DNode *tail;
+};
+class Csll_observe(){ 
+ private:        
+        Node *head;
+        int n;
+public: 
 
-    (obj->*method)(); // perform operation
-
-    auto t1 = clk::now();
-
-    auto duration = chrono::duration_cast<chrono::nanoseconds>(t1 - t0);
-    cout<<msg <<": "<<duration.count() <<" nanosecond(s)" <<endl;
+};
+#endif
