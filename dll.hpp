@@ -13,7 +13,9 @@ class Doublylinkedlist{
         n=0;
     }
     void deleteAt(){
-       DNode* temp=Node;
+      
+
+
        
     }
 };

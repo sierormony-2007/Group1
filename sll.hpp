@@ -10,16 +10,16 @@ int value;
 Node* next;
 };
 
-class  LinkedList{
+class  Sll{
     // proprties = value
     private:        
-        Node *head, *cur;
+        Node *head, *cur, *tail;
         int n;
 
     public:
     //contructors = method but special
 
-    LinkedList(){
+    Sll(){
         head = nullptr;
         n=0;
     }
@@ -32,18 +32,26 @@ class  LinkedList{
             cur = cur->next;
         }
     }
-//insert at the front
-    void insertFront(int val){
+//push/pop front back Head only
+    void push_frontH(int val){
         Node* newNode = new Node{val, nullptr};
         newNode->next = head;
         head = newNode;
         n++;
     }
-
-    //insert at the end
-    void insertEnd(int val){
+    void pop_frontH(int val){
+        Node* newNode = new Node{val, nullptr};
+        if(n==0){
+            cout<<"no node to remove"<<endl;
+        }
+        Node* tmp = head;
+        head = head->next;
+        delete tmp;
+    }
+    void push_backH(int val){
+        Node* newNode = new Node{val, nullptr};
         if(n == 0){
-            insertFront(val);
+            push_frontH(val);
             return;
         }
         _traverse();
@@ -51,7 +59,28 @@ class  LinkedList{
         cur->next = newNode;
         n++;
     }
-    //insert at the middle or a specific position
+    void pop_backH(int val){
+        if(n==0){
+            cout<<"No node to delelte";
+        }
+        cur = head;
+        while(cur->next->next){
+            cur = cur->next;
+        }
+        delete cur->next;
+        cur->next = nullptr;
+        n--;
+    }
+
+
+    
+    
+    //push/pop front back Head + tail
+    void push_frontHT(int val){
+
+    }
+
+
     void insertMiddle(int val, int pos){
         if(pos > n){
             cout<<"Out of node range!\n";
@@ -71,29 +100,8 @@ class  LinkedList{
         cur->next = newNode;
         n++;
     }
-    // delete at the front
-    void deleteFront(){
-        if(n==0){
-            cout<<"No node to delelte";
-        }
-        Node* tmp = head;
-        head = head->next;
-        delete tmp;
-        n--;
-    }
-    //delete at the end
-    void deleteEnd(){
-        if(n==0){
-            cout<<"No node to delelte";
-        }
-        cur = head;
-        while(cur->next->next){
-            cur = cur->next;
-        }
-        delete cur->next;
-        cur->next = nullptr;
-        n--;
-    }
+
+
     //delete from the middle
     void deleteMiddle(int val, int pos){
         if(pos > n){
@@ -114,36 +122,7 @@ class  LinkedList{
         cur->next = nodeToDelete->next;
         delete nodeToDelete;
     }
-// swaping two nodes 
-void swap(){
-    Node *newNode = new Node();
-    newNode->next = head;
 
-
-    while(newNode->next != nullptr && newNode->next->next != nullptr){
-        Node *swap1 = newNode->next;
-        Node *swap2 = newNode->next->next;
-
-        swap1->next = swap2->next;
-        swap2->next = swap1;
-
-        newNode->next = swap2;
-        newNode = swap1;
-    }
-    
-}
-
-//search in linkedList
-    bool search(int value) {
-        Node* cur = head;
-        while(cur != nullptr) {
-            if(cur->value == value) {
-                return true;
-            }
-            cur = cur->next;
-        }
-        return false;
-    }
     void print(){
         cur = head;
         while(cur != nullptr){
