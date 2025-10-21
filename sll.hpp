@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <string>
 using namespace std;
@@ -127,7 +126,3 @@ class  Sll{
     cout << endl;
     }
 };
-
-void sll_obs(){
-
-}
