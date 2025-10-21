@@ -1,11 +1,7 @@
 #include<iostream>
 #include<string>
 using namespace std;
-struct DNode{
-    int value;
-    DNode* next;
-    DNode* prev;
-};
+#include "node.hpp"
 class Doublylinkedlist{
     private:
        DNode *head, *tail;
@@ -16,8 +12,8 @@ class Doublylinkedlist{
         tail = nullptr;
         n=0;
     }
-    void deleteAt(int val){
-       DNode* temp = head;
-         
+    void deleteAt(){
+       DNode* temp=Node;
+       
     }
 };
