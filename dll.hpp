@@ -12,10 +12,29 @@ class Doublylinkedlist{
         tail = nullptr;
         n=0;
     }
-    void deleteAt(){
+   //erase-given node
+    void deleteFront(){
       
-
-
-       
     }
+    void deleteAtPosition(){
+      
+    }
+    void deleteTail(){
+      
+    }
+    //push/pop front&back Head + tail
+    void push_front(int val){
+
+    }
+    void push_back(int val){
+
+    }
+    void pop_front(){
+
+    }
+    void pop_back(){
+
+    }
+
+
 };
