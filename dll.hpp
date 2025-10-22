@@ -13,10 +13,7 @@ class Doublylinkedlist{
         n=0;
     }
    //erase-given node
-    void deleteFront(){
-        
-      
-    }
+    
     void deleteAtPosition(int pos){
         DNode* cur=head;
         if(pos<0||pos>=n){
@@ -32,9 +29,7 @@ class Doublylinkedlist{
         delete nodeTodelete;
         n--;
     }
-    void deleteTail(){
-      
-    }
+    
     //push/pop front&back Head + tail
     void push_front(int val){
 
@@ -54,7 +49,7 @@ void deleteFront(){
             cout<<"empty!!";
             return;
         }
-        Node* head = tail;
+        DNode* head = tail;
         if(head == tail){
             head = tail = nullptr;
         }else {
@@ -62,7 +57,7 @@ void deleteFront(){
             head->prev = nullptr;
         }
     }
-    void deleteEnd(){
+    void deleteTail(){
         if(n==0){
             cout<<"empty!!";
             return;
