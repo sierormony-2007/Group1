@@ -16,6 +16,8 @@ void observe_time(Csll_observe* obj, void (Csll_observe::*method)(), string msg)
     cout << msg << ": " << duration.count() << " nanosecond(s)" << endl;
 }
 
+
+
 int main() {
     Csll_observe myObj;
     observe_time(&myObj, &Csll_observe::method, "Timing method");
