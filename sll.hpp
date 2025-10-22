@@ -17,6 +17,7 @@ class  Sll{
 
     Sll(){
         head = nullptr;
+        tail = nullptr;
         n=0;
     }
     int size(){
@@ -35,8 +36,7 @@ class  Sll{
         head = newNode;
         n++;
     }
-    void pop_frontH(int val){
-        Node* newNode = new Node{val, nullptr};
+    void pop_frontH(){
         if(n==0){
             cout<<"no node to remove"<<endl;
         }
@@ -51,13 +51,18 @@ class  Sll{
             return;
         }
         _traverse();
-        Node* newNode = new Node{val, nullptr};
         cur->next = newNode;
         n++;
     }
-    void pop_backH(int val){
+    void pop_backH(){
         if(n==0){
             cout<<"No node to delelte";
+        }
+        if(n == 1){
+            delete head;
+            head = nullptr;
+            n--;
+            return;
         }
         cur = head;
         while(cur->next->next){
@@ -73,8 +78,56 @@ class  Sll{
     
     //push/pop front back Head + tail
     void push_frontHT(int val){
+        Node* newNode = new Node{val, nullptr};
+        newNode->next = head;
+        head = newNode;
+        if(tail = nullptr){
+            tail = head;
+        }
+        n++;
+    }
+    void pop_frontHT(){
+        if(n==0){
+            cout<<"no node to remove"<<endl;
+        }
+        Node* tmp = head;
+        head = head->next;
+        delete tmp;
+        n--;
+        if(head == nullptr){
+            tail = nullptr;
+        }
 
     }
+    void push_backHT(int val){
+        Node* newNode = new Node{val, nullptr};
+        if(tail == nullptr){
+            head = tail = newNode;
+        }else{
+            tail->next = newNode;
+            tail = newNode;
+        }
+        n++;
+    }
+    void pop_backHT(){
+        if(n == 0){
+            cout<<"no node to delete"<<endl;
+        }
+        if(n == 1){
+            head = tail = nullptr;
+            n--;
+            return;
+        }
+        cur = head;
+        while(cur->next != tail){
+            cur =cur->next;
+        }
+        delete tail;
+        tail = cur;
+        tail->next = nullptr;
+        n--;
+    }
+    
 
 
     void insertMiddle(int val, int pos){
