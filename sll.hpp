@@ -13,7 +13,7 @@ Node* next;
 class  Sll{
     // proprties = value
     private:        
-        Node *head, *cur, *tail;
+        Node *head, *cur, *tail, *prev;
         int n;
 
     public:
@@ -22,6 +22,7 @@ class  Sll{
     Sll(){
         head = nullptr;
         n=0;
+        prev = nullptr;
     }
     int size(){
         return n;
@@ -101,7 +102,6 @@ class  Sll{
         n++;
     }
 
-
     //delete from the middle
     void deleteMiddle(int val, int pos){
         if(pos > n){
@@ -122,6 +122,7 @@ class  Sll{
         cur->next = nodeToDelete->next;
         delete nodeToDelete;
     }
+    
 
     void print(){
         cur = head;
