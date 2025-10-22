@@ -38,13 +38,6 @@ class Doublylinkedlist{
 
     }
     void pop_front(){
-
-    }
-    void pop_back(){
-
-    }
-    
-void deleteFront(){
         if(n==0){
             cout<<"empty!!";
             return;
@@ -57,7 +50,7 @@ void deleteFront(){
             head->prev = nullptr;
         }
     }
-    void deleteTail(){
+    void pop_back(){
         if(n==0){
             cout<<"empty!!";
             return;
@@ -70,6 +63,5 @@ void deleteFront(){
             tail->next = nullptr;
         }
     }
-
-
+    
 };
