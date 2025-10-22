@@ -22,10 +22,19 @@ class Csll_observe{
     void method();
 
 };
-void Csll_observe::method() {
-    if(tail){
-  tail->next = head;
+// void Csll_observe::method() {//csll
+//     if(tail){
+//   tail->next = head;
+//     }
+// }
+void Csll_observe::method() { 
+    SNode* cur = head;        
+    int steps = n;            
+    for (int i = 0; i < steps; i++) {
+        cur = cur->next;
+        if (!cur) cur = head;//i give up bro
     }
-    cout << "Method called!" << endl;
+    cout << "SLL: " << endl;
 }
+
 #endif
