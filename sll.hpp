@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> a659d28932f7081816c75044400926f565baf3bf
 #include <iostream>
 #include <string>
 using namespace std;
@@ -135,7 +132,3 @@ class  Sll{
     cout << endl;
     }
 };
-<<<<<<< HEAD
-
-=======
->>>>>>> a659d28932f7081816c75044400926f565baf3bf
