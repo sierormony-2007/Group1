@@ -1,24 +1,25 @@
+
 #include <iostream>
 #include <string>
+#include "node.hpp"
 #ifndef NODE
 #define NODE
+
 using namespace std;
-struct Node{
-int value;
-Node* next;
-Node *tail;
-};
-struct DNode{
-    int data;
-    DNode *prev;
-    DNode *next;
-    DNode *tail;
-};
-class Csll_observe(){ 
- private:        
-        Node *head;
-        int n;
-public: 
+class Csll_observe{
+    private:
+    SNode *head;
+    SNode *next;
+    SNode *tail;
+    int n;
+    public:
+    Csll_observe(){
+        head = nullptr;
+        int n = 0;
+        
+        SNode ->tail = head; 
+
+    }
 
 };
 #endif

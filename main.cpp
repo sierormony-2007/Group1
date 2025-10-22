@@ -13,7 +13,7 @@ int main(){
     (obj->*method)(); // perform operation
 
     auto t1 = clk::now();
-
+p
     auto duration = chrono::duration_cast<chrono::nanoseconds>(t1 - t0);
     cout<<msg <<": "<<duration.count() <<" nanosecond(s)" <<endl;
     return 0;
