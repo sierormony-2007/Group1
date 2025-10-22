@@ -2,12 +2,12 @@
 #include<string>
 #include "node.hpp"
 using namespace std;
-class Doublylinkedlist{
+class Dll{
     private:
        DNode *head, *tail, *prev, *cur;
        int n;
     public:
-    Doublylinkedlist(){
+    Dll(){
         head = nullptr;
         tail = nullptr;
         n=0;
@@ -86,3 +86,15 @@ class Doublylinkedlist{
     }
     
 };
+void dll_observe(Dll* obj, void (Dll::*method)(), string msg){
+    using clk = chrono::high_resolution_clock;
+    auto t0 = clk::now();
+
+    (obj->*method)(); // perform operation
+
+    auto t1 = clk::now();
+
+    auto duration = chrono::duration_cast<chrono::nanoseconds>(t1 - t0);
+    cout<<msg <<": "<<duration.count() <<" nanosecond(s)" <<endl;
+    return ;
+}
