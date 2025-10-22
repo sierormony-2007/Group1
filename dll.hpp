@@ -1,7 +1,7 @@
 #include<iostream>
 #include<string>
-using namespace std;
 #include "node.hpp"
+using namespace std;
 class Doublylinkedlist{
     private:
        DNode *head, *tail, *prev;
@@ -14,10 +14,23 @@ class Doublylinkedlist{
     }
    //erase-given node
     void deleteFront(){
+        
       
     }
-    void deleteAtPosition(){
-      
+    void deleteAtPosition(int pos){
+        DNode* cur=head;
+        if(pos<0||pos>=n){
+            cout<<"Out of node range!\n";
+            return;
+        }
+        for(int i=0; i<pos-1; i++){
+            cur=cur->next;
+        }
+        DNode* nodeTodelete=cur->next;
+        cur->next=nodeTodelete->next;
+        nodeTodelete->next->prev=nodeTodelete->prev;
+        delete nodeTodelete;
+        n--;
     }
     void deleteTail(){
       
