@@ -4,19 +4,28 @@
 #include "dll.hpp"
 #include "node.hpp"
 #include "csll.hpp"
-using namespace std;
-int main(){
+#include <chrono>
+using clk = std::chrono::high_resolution_clock;
 
- Csll_observe(Csll* obj, void (Csll::*method)(), string msg){
+using namespace std;
+
+void Csll_observe(Csll_observe* obj, void (Csll_observe::*method)(), string msg){
    auto t0 = clk::now();
 
     (obj->*method)(); // perform operation
 
     auto t1 = clk::now();
-p
+
     auto duration = chrono::duration_cast<chrono::nanoseconds>(t1 - t0);
     cout<<msg <<": "<<duration.count() <<" nanosecond(s)" <<endl;
+ }
+int main(){
+Csll_observe myObj;
+ Csll_observe(&myObj, &Csll_observe::method, "Timing method");
+
+
+
+
     return 0;
-}
 
 }

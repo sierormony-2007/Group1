@@ -7,19 +7,25 @@
 
 using namespace std;
 class Csll_observe{
+
     private:
     SNode *head;
-    SNode *next;
     SNode *tail;
     int n;
     public:
     Csll_observe(){
         head = nullptr;
-        int n = 0;
+        tail = nullptr;
+        n = 0;
         
-        SNode ->tail = head; 
-
     }
+    void method();
 
 };
+void Csll_observe::method() {
+    if(tail){
+  tail->next = head;
+    }
+    cout << "Method called!" << endl;
+}
 #endif
