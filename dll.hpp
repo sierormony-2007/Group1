@@ -4,7 +4,7 @@
 using namespace std;
 class Doublylinkedlist{
     private:
-       DNode *head, *tail, *prev;
+       DNode *head, *tail, *prev, *cur;
        int n;
     public:
     Doublylinkedlist(){
@@ -32,10 +32,31 @@ class Doublylinkedlist{
     
     //push/pop front&back Head + tail
     void push_front(int val){
+        DNode* newNode = new DNode{val,nullptr};
+        if(head == nullptr){
+            head= newNode;
+            tail= newNode;
+        }else{
+        newNode->next = head;
+        head->prev = newNode;
+        head = newNode;}
 
+
+        
     }
     void push_back(int val){
-
+        if(n==0){
+            push_front(val);
+        }
+        DNode* newNode = new DNode{val,nullptr};
+        if(head == nullptr){
+            head= newNode;
+            tail= newNode;
+        }else{
+        tail->next = newNode;
+        newNode->prev = tail;
+        tail = newNode;
+        }
     }
     void pop_front(){
         if(n==0){
