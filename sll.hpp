@@ -10,7 +10,7 @@ Node* next;
 class  Sll{
     // proprties = value
     private:        
-        Node *head, *cur, *tail, *prev;
+        Node *head, *cur, *tail;
         int n;
 
     public:
@@ -19,8 +19,8 @@ class  Sll{
     Sll(){
         head = nullptr;
         tail = nullptr;
+        cur = nullptr;
         n=0;
-        prev = nullptr;
     }
     int size(){
         return n;
@@ -130,49 +130,92 @@ class  Sll{
         n--;
     }
     
-
-
-    void insertMiddle(int val, int pos){
-        if(pos > n){
-            cout<<"Out of node range!\n";
-        }
-        if(pos == 0){
-            insertFront(val);
-            return;
-        }
-        if(pos == n){
-            insertEnd(val);
-            return;
-        }
+// Non-circular SLL that restarts at head whenever you hit nullptr
+    void tail_to_head(){
         cur = head;
-        for(int i=0; i<pos - 1; i++)
+        while(cur->next != nullptr){
             cur = cur->next;
-        Node *newNode = new Node{val, nullptr};
-        cur->next = newNode;
-        n++;
+        }
     }
 
-    //delete from the middle
-    void deleteMiddle(int val, int pos){
-        if(pos > n){
-            cout<<"Out of node range!\n";
-        }
-        if(pos == 0){
-            deleteFront();
+    // rotate right by k
+    void rotate_right(int k){
+        if(head == nullptr || k ==0 || n<=1){
             return;
         }
-        if(pos == n){
-            deleteEnd();
+        
+        int len=1;
+        tail = head;
+        while(tail->next != nullptr){
+            tail = tail->next;
+            len++;
+        }
+
+        k = k % len;
+        if(k == 0){
             return;
         }
-        cur = head;
-        for(int i=2; i<pos; i++)
-            cur = cur->next;
-        Node* nodeToDelete = cur->next;
-        cur->next = nodeToDelete->next;
-        delete nodeToDelete;
+
+        Node* newTail = head;
+        for(int i=0; i<len - k - 1; i++){
+            newTail = newTail->next;
+        }
+
+        Node* newHead = newTail->next;
+        newTail->next = nullptr;
+        tail->next = head;
+
+        head = newHead;
+        tail = newTail;
+
     }
+
+    // erase when we know predecessor
+    void erase_with_pred(Node* prev){
+        if (prev == nullptr || prev->next == nullptr) {
+            cout << "Invalid predecessor!" << endl;
+            return;
+        }
+        Node* toDelete = prev->next;
+        prev->next = toDelete->next;
+        if (toDelete == tail) tail = prev;
+        delete toDelete;
+        n--;
+    }
+    //erase without predecessor
+    void erase_without_pred(Node* node){
+        if (node == nullptr || node->next == nullptr) {
+            cout << "Cannot delete the last node without predecessor!" << endl;
+            return;
+        }
+        Node* nextNode = node->next;
+        node->value = nextNode->value;    
+        node->next = nextNode->next;      
+        if (nextNode == tail) tail = node;
+        delete nextNode;
+        n--;
+    }
+
     
+    Node* find(int val) {
+        cur = head;
+        while (cur != nullptr) {
+            if (cur->value == val) return cur;
+            cur = cur->next;
+        }
+        return nullptr;
+    }
+
+    Node* find_prev(int val) {
+        cur = head;
+        while (cur && cur->next) {
+            if (cur->next->value == val)
+                return cur;
+            cur = cur->next;
+        }
+        return nullptr;
+    }
+
 
     void print(){
         cur = head;
