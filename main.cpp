@@ -7,6 +7,8 @@
 using namespace std;
 int main(){
 
+
+
 void sll_observe(Sll* obj, void (Sll::*method)(), string msg){
     auto t0 = clk::now();
 
@@ -18,5 +20,4 @@ void sll_observe(Sll* obj, void (Sll::*method)(), string msg){
     cout<<msg <<": "<<duration.count() <<" nanosecond(s)" <<endl;
     return 0;
 }
-
 }
