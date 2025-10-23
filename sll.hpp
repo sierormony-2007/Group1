@@ -228,7 +228,7 @@ class  Sll{
     }
     cout << endl;
     }
-
+    template <typename T, typename Method, typename... Args>
     void sll_observe(T* obj, Method method, string msg, Args&&... args) {
     auto t0 = chrono::high_resolution_clock::now();
 
