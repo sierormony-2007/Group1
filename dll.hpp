@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include<chrono>
 #include "node.hpp"
 using namespace std;
 class Dll{
@@ -86,15 +87,26 @@ class Dll{
     }
     
 };
-void dll_observe(Dll* obj, void (Dll::*method)(), string msg){
-    using clk = chrono::high_resolution_clock;
-    auto t0 = clk::now();
+// void dll_observe(Dll* obj, void (Dll::*method)(), string msg){
+//     using clk = chrono::high_resolution_clock;
+//     auto t0 = clk::now();
 
-    (obj->*method)(); // perform operation
+//     (obj->*method)(); // perform operation
 
-    auto t1 = clk::now();
+//     auto t1 = clk::now();
+
+//     auto duration = chrono::duration_cast<chrono::nanoseconds>(t1 - t0);
+//     cout<<msg <<": "<<duration.count() <<" nanosecond(s)" <<endl;
+//     return ;
+// }
+template <typename T, typename Method, typename... Args>
+void dll_observe(T* obj, Method method, string msg, Args&&... args) {
+    auto t0 = chrono::high_resolution_clock::now();
+
+    (obj->*method)(std::forward<Args>(args)...); // call the method with parameters
+
+    auto t1 = chrono::high_resolution_clock::now();
 
     auto duration = chrono::duration_cast<chrono::nanoseconds>(t1 - t0);
-    cout<<msg <<": "<<duration.count() <<" nanosecond(s)" <<endl;
-    return ;
+    cout << msg << ": " << duration.count() << " nanosecond(s)" << endl;
 }
